@@ -31,12 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'api',
     'core',
     'student',
@@ -126,3 +129,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Angelica LMS Admin",
+    "site_header": "Angelica LMS",
+    "site_brand": "Angelica LMS",
+    "site_logo": "static/img/logo.png",
+    "login_logo": None,
+    "welcome_sign": "Welcome to Angelica  LMS",
+    "copyright": "Angelica LMS Ltd",
+}
