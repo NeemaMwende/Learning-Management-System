@@ -32,8 +32,8 @@ class Profile(models.Model):
     about = models.TextField(null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
 
-     def __str__(self):
-            if self.full_name:
+    def __str__(self):
+        if self.full_name:
             return str(self.full_name)
         else:
             return str(self.user.full_name)
