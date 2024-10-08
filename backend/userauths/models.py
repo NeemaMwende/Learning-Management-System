@@ -32,13 +32,17 @@ class Profile(models.Model):
     about = models.TextField(null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.full_name if self.full_name else self.user.full_name
+     def __str__(self):
+            if self.full_name:
+            return str(self.full_name)
+        else:
+            return str(self.user.full_name)
     
     def save(self, *args, **kwargs):
-        if not self.full_name:  # Corrected condition check
-            self.full_name = self.user.username
+        if self.full_name == "" or self.full_name == None:
+            self.full_name == self.user.username
         super(Profile, self).save(*args, **kwargs)
+
 
 
 # Signals for creating and saving Profile on User creation
