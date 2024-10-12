@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from datetime import timedelta
+from environs import Env
+env = Env()
+env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -60,14 +63,15 @@ INSTALLED_APPS = [
 
 ]
 EMAIL_BACKEND = "anymail.backends.neemamwende009@gmail.com.EmailBackend"
-STRIPE_SECRET_KEY = "mykey"
-PAYPAL_CLIENT_ID = "mypaypallid"
-PAYPAL_SECRET_ID = "mysecret"
+STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")
+PAYPAL_CLIENT_ID = env("PAYPAL_CLIENT_ID")
+PAYPAL_SECRET_ID = env("PAYPAL_SECRET_ID")
+MAILGUN_SECRET_KEY = env("MAILGUN_SECRET_KEY")
 
 
 ANYMAIL = {
     # Anymail-specific settings for your email provider
-    'SENDGRID_API_KEY': 'your-sendgrid-api-key',  # Example for SendGrid
+    'SENDGRID_API_KEY': env("SENDGRIP_API_KEY")  # Example for SendGrid
     # Other settings...
 }
 
