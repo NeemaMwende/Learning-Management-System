@@ -51,13 +51,27 @@ INSTALLED_APPS = [
     # Third Party Apps
 	'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
-    'rest_framework_simplejwt.authentication.JWTAuthentication',
+    # 'rest_framework_simplejwt.authentication.JWTAuthentication',
     'corsheaders',
     'anymail',
     'storages',
    	'django_ckeditor_5',
+    # 'ckeditor',
 
 ]
+EMAIL_BACKEND = "anymail.backends.neemamwende009@gmail.com.EmailBackend"
+STRIPE_SECRET_KEY = "mykey"
+PAYPAL_CLIENT_ID = "mypaypallid"
+PAYPAL_SECRET_ID = "mysecret"
+
+
+ANYMAIL = {
+    # Anymail-specific settings for your email provider
+    'SENDGRID_API_KEY': 'your-sendgrid-api-key',  # Example for SendGrid
+    # Other settings...
+}
+
+DEFAULT_FROM_EMAIL = 'neemamwende009@gmail.com'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -69,6 +83,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Example: add your frontend's domain
