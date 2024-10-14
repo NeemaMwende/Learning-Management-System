@@ -21,8 +21,9 @@ const useAuthStore = create((set, get) => ({
 }));
 
 
-if (import.meta.env.DEV) {
+if (process.env.REACT_APP_ENV === 'development') {
   mountStoreDevtool("Store", useAuthStore);
 }
+
 
 export { useAuthStore };

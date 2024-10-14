@@ -12,7 +12,11 @@ function BaseHeader() {
         navigate(`/search/?search=${searchQuery}`);
     };
 
-    const [isLoggedIn, user] = useAuthStore((state) => [state.isLoggedIn, state.user]);
+    const { isLoggedIn, user } = useAuthStore((state) => ({
+        isLoggedIn: state.isLoggedIn,
+        user: state.user
+      }));
+      
 
     return (
         <div>

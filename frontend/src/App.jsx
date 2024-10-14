@@ -49,6 +49,9 @@ function App() {
   const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Move useAxios hook call outside the useEffect
+  const axiosInstance = useAxios();
+
   useEffect(() => {
     const fetchCartCount = async () => {
       try {
@@ -63,7 +66,7 @@ function App() {
       try {
         const user_id = UserData()?.user_id;
         if (user_id) {
-          const res = await useAxios().get(`user/profile/${user_id}/`);
+          const res = await axiosInstance.get(`user/profile/${user_id}/`);
           setProfile(res.data || []);
         }
       } catch (error) {
@@ -73,7 +76,7 @@ function App() {
 
     Promise.all([fetchCartCount(), fetchUserProfile()])
       .finally(() => setLoading(false));
-  }, []);
+  }, [axiosInstance]);  // Make sure axiosInstance is included as a dependency
 
   if (loading) {
     return <div>Loading...</div>;
